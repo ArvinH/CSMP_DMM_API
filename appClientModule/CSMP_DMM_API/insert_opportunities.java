@@ -30,16 +30,17 @@ public class insert_opportunities {
 		  public insert_opportunities(){
 		  
 		  }
-		  public String send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
+		  public void send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
 					deleted, String assigned_user_id, String opportunity_type, String campaign_id, String lead_source, String amount, String amount_usdollar, String date_closed, 
 					String next_step, String sales_stage, String probability){
-		  String result="";
+		 
 		  try{
-		   URL httpurl = new URL("http://192.168.1.160:8080/CSMP_DMM/insert_opportunities.do");
+		   URL httpurl = new URL("http://localhost:8080/CSMP_DMM/insert_opportunities.do");
 		   HttpURLConnection httpConn = (HttpURLConnection)httpurl.openConnection(); 
 		   httpConn.setRequestMethod("POST");
 		   httpConn.setDoOutput(true);
 		   httpConn.setDoInput(true);
+		   httpConn.setUseCaches(false);
 		   PrintWriter out = new PrintWriter(httpConn.getOutputStream());
 		    this.id = "id="+URLEncoder.encode(id,"UTF-8");
 		    this.SME_ID = "SME_ID="+URLEncoder.encode(SME_ID,"UTF-8");
@@ -60,16 +61,17 @@ public class insert_opportunities {
 		    this.next_step = "next_step="+URLEncoder.encode(next_step,"UTF-8");
 		    this.sales_stage = "sales_stage="+URLEncoder.encode(sales_stage,"UTF-8");
 		    this.probability = "probability="+URLEncoder.encode(probability,"UTF-8");
+		
 		   out.print(this.id+"&"+this.SME_ID+"&"+this.name+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
 		    this.created_by+"&"+this.description+"&"+this.deleted+"&"+this.assigned_user_id+"&"+this.opportunity_type+"&"+
 		    this.campaign_id+"&"+this.lead_source+"&"+this.amount+"&"+this.amount_usdollar+"&"+this.date_closed+"&"+
 		    this.next_step+"&"+this.sales_stage+"&"+this.probability);
 		   out.flush();
 		   out.close();
-		   
+		   BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
 		  }catch(Exception e){
-		   System.out.println("没有结果！"+e);
+		   e.printStackTrace();
 		  }
-		  return result;
+		  
 		  }
 }
