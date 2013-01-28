@@ -35,8 +35,9 @@ public class insert_opportunities {
 					String next_step, String sales_stage, String probability){
 		  String result="";
 		  try{
-		   URL httpurl = new URL("http://192.168.1.160:8080/insert_opportunities.do");
-		   HttpURLConnection httpConn = (HttpURLConnection)httpurl.openConnection();       
+		   URL httpurl = new URL("http://192.168.1.160:8080/CSMP_DMM/insert_opportunities.do");
+		   HttpURLConnection httpConn = (HttpURLConnection)httpurl.openConnection(); 
+		   httpConn.setRequestMethod("POST");
 		   httpConn.setDoOutput(true);
 		   httpConn.setDoInput(true);
 		   PrintWriter out = new PrintWriter(httpConn.getOutputStream());
