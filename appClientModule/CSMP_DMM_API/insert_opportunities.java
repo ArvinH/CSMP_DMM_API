@@ -6,6 +6,12 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
+
+
+
 
 public class insert_opportunities {
 	private String id = null;
@@ -30,13 +36,26 @@ public class insert_opportunities {
 		  public insert_opportunities(){
 		  
 		  }
-		  public void send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
+		  @SuppressWarnings("restriction")
+		public void send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
 					deleted, String assigned_user_id, String opportunity_type, String campaign_id, String lead_source, String amount, String amount_usdollar, String date_closed, 
 					String next_step, String sales_stage, String probability){
 		 
 		  try{
-		   URL httpurl = new URL("http://192.168.1.102:42353/insert_opportunities.do");
-		   HttpURLConnection httpConn = (HttpURLConnection)httpurl.openConnection(); 
+			 
+		   URL httpurl = new URL("https://192.168.1.160:8443/CSMP_DMM/insert_opportunities.do");
+		   
+		   HostnameVerifier hv = new HostnameVerifier() {
+		        public boolean verify(String urlHostName, SSLSession session) {
+		            System.out.println("Warning: URL Host: " + urlHostName + " vs. "
+		                               + session.getPeerHost());
+		            return true;
+		        }
+		    };
+		   trustAllHttpsCertificates();
+		   HttpsURLConnection.setDefaultHostnameVerifier(hv);
+
+		   HttpsURLConnection httpConn = (HttpsURLConnection)httpurl.openConnection(); 
 		   httpConn.setRequestMethod("POST");
 		   httpConn.setDoOutput(true);
 		   httpConn.setDoInput(true);
@@ -75,4 +94,46 @@ public class insert_opportunities {
 		  }
 		  
 		  }
+		 
+			
+			private static void trustAllHttpsCertificates() throws Exception {
+				javax.net.ssl.TrustManager[] trustAllCerts = new javax.net.ssl.TrustManager[1];
+				javax.net.ssl.TrustManager tm = new miTM();
+				trustAllCerts[0] = tm;
+				javax.net.ssl.SSLContext sc = javax.net.ssl.SSLContext
+						.getInstance("SSL");
+				sc.init(null, trustAllCerts, null);
+				javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(sc
+						.getSocketFactory());
+			}
+
+			static class miTM implements javax.net.ssl.TrustManager,
+					javax.net.ssl.X509TrustManager {
+				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+					return null;
+				}
+
+				public boolean isServerTrusted(
+						java.security.cert.X509Certificate[] certs) {
+					return true;
+				}
+
+				public boolean isClientTrusted(
+						java.security.cert.X509Certificate[] certs) {
+					return true;
+				}
+
+				public void checkServerTrusted(
+						java.security.cert.X509Certificate[] certs, String authType)
+						throws java.security.cert.CertificateException {
+					return;
+				}
+
+				public void checkClientTrusted(
+						java.security.cert.X509Certificate[] certs, String authType)
+						throws java.security.cert.CertificateException {
+					return;
+				}
+			}
+
 }
