@@ -5,10 +5,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.KeyStore;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+import javax.security.cert.X509Certificate;
 
 
 
@@ -33,11 +41,12 @@ public class insert_opportunities {
 	private String next_step = null;
 	private String sales_stage = null;
 	private String probability = null;
+	private int status = 0;
 		  public insert_opportunities(){
 		  
 		  }
 		  @SuppressWarnings("restriction")
-		public void send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
+		public int send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
 					deleted, String assigned_user_id, String opportunity_type, String campaign_id, String lead_source, String amount, String amount_usdollar, String date_closed, 
 					String next_step, String sales_stage, String probability){
 		 
@@ -52,6 +61,7 @@ public class insert_opportunities {
 		            return true;
 		        }
 		    };
+		    
 		   trustAllHttpsCertificates();
 		   HttpsURLConnection.setDefaultHostnameVerifier(hv);
 
@@ -88,10 +98,13 @@ public class insert_opportunities {
 		   out.flush();
 		   out.close();
 		   BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
+		   status = Integer.parseInt(br.readLine());
 		   br.close();
+		   
 		  }catch(Exception e){
 		   e.printStackTrace();
 		  }
+		return status;
 		  
 		  }
 		 
@@ -109,31 +122,42 @@ public class insert_opportunities {
 
 			static class miTM implements javax.net.ssl.TrustManager,
 					javax.net.ssl.X509TrustManager {
+				private static final String SERVER_KEY_STORE_PASSWORD = "netdb510";
+
 				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-					return null;
-				}
+					java.security.cert.X509Certificate[] chain = null;
+			        try {
+			            TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
+			            KeyStore tks = KeyStore.getInstance("JKS");
+			            tks.load(new FileInputStream("D:/apache-tomcat-7.0.32/conf/SSL/serverstore.jks"),
+			            SERVER_KEY_STORE_PASSWORD.toCharArray());
+			            tmf.init(tks);
+			            chain = ((X509TrustManager) tmf.getTrustManagers()[0]).getAcceptedIssuers();
+ 
+			          
 
-				public boolean isServerTrusted(
-						java.security.cert.X509Certificate[] certs) {
-					return true;
-				}
+			        } catch (Exception e) {
+			            throw new RuntimeException(e);
+			        }
+			        return chain;
+			    }
 
-				public boolean isClientTrusted(
-						java.security.cert.X509Certificate[] certs) {
-					return true;
-				}
-
-				public void checkServerTrusted(
-						java.security.cert.X509Certificate[] certs, String authType)
-						throws java.security.cert.CertificateException {
-					return;
-				}
-
+				@Override
 				public void checkClientTrusted(
-						java.security.cert.X509Certificate[] certs, String authType)
-						throws java.security.cert.CertificateException {
-					return;
+						java.security.cert.X509Certificate[] chain,
+						String authType) throws CertificateException {
+					// TODO Auto-generated method stub
+					
 				}
-			}
+
+				@Override
+				public void checkServerTrusted(
+						java.security.cert.X509Certificate[] chain,
+						String authType) throws CertificateException {
+					// TODO Auto-generated method stub
+					
+				}
+					
+				}
 
 }
