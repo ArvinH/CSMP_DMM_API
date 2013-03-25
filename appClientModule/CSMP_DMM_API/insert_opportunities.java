@@ -129,7 +129,7 @@ public class insert_opportunities {
 			        try {
 			            TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
 			            KeyStore tks = KeyStore.getInstance("JKS");
-			            tks.load(new FileInputStream("D:/apache-tomcat-7.0.32/conf/SSL/serverstore.jks"),
+			            tks.load(new FileInputStream("SSL/serverstore.jks"),
 			            SERVER_KEY_STORE_PASSWORD.toCharArray());
 			            tmf.init(tks);
 			            chain = ((X509TrustManager) tmf.getTrustManagers()[0]).getAcceptedIssuers();
