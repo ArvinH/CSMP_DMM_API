@@ -85,14 +85,14 @@ public class insert_opportunities {
 		    this.name = "name="+URLEncoder.encode(name,"UTF-8");
             this.related_to = "related_to="+URLEncoder.encode(related_to,"UTF-8");  
 		    this.opportunity_type = "opportunity_type="+URLEncoder.encode(opportunity_type,"UTF-8");
-		    this.campaign_source = "campaign_id="+URLEncoder.encode(campaign_source,"UTF-8");
+		    this.campaign_source = "campaign_source="+URLEncoder.encode(campaign_source,"UTF-8");
 		    this.lead_source = "lead_source="+URLEncoder.encode(lead_source,"UTF-8");
 		    this.amount = "amount="+URLEncoder.encode(amount,"UTF-8");
 		    this.date_closed = "date_closed="+URLEncoder.encode(date_closed,"UTF-8");
 		    this.next_step = "next_step="+URLEncoder.encode(next_step,"UTF-8");
 		    this.sales_stage = "sales_stage="+URLEncoder.encode(sales_stage,"UTF-8");
 		    this.probability = "probability="+URLEncoder.encode(probability,"UTF-8");
-		
+		  
 		   out.print(this.Token+"&"+this.id+"&"+this.deleted+"&"+this.SME_ID+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
 		    this.created_by+"&"+this.description+"&"+this.assigned_user_id+"&"+this.name+"&"+this.related_to+"&"+
 		    this.opportunity_type+"&"+this.campaign_source+"&"+this.lead_source+"&"+this.amount+"&"+this.date_closed+"&"+
