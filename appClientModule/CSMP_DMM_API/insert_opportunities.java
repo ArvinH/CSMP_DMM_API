@@ -24,20 +24,20 @@ import javax.security.cert.X509Certificate;
 public class insert_opportunities {
 	private String Token = null;
 	private String id = null;
+	private String deleted = null;
 	private String SME_ID = null;
-	private String name = null;
 	private String date_entered = null;
 	private String date_modified = null;
 	private String modified_user_id = null;
 	private String created_by = null;
 	private String description = null;
-	private String deleted = null;
 	private String assigned_user_id = null;
+	private String name = null;
+	private String related_to = null;
 	private String opportunity_type = null;
 	private String campaign_id = null;
 	private String lead_source = null;
 	private String amount = null;
-	private String amount_usdollar = null;
 	private String date_closed = null;
 	private String next_step = null;
 	private String sales_stage = null;
@@ -47,8 +47,7 @@ public class insert_opportunities {
 		  
 		  }
 		  @SuppressWarnings("restriction")
-		public int send(String Token, String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
-					deleted, String assigned_user_id, String opportunity_type, String campaign_id, String lead_source, String amount, String amount_usdollar, String date_closed, 
+		public int send(String Token, String id,String deleted, String SME_ID, String date_entered, String date_modified, String modified_user_id, String created_by, String description,  String assigned_user_id, String name, String related_to, String opportunity_type, String campaign_source, String lead_source, String amount,String date_closed, 
 					String next_step, String sales_stage, String probability){
 		 
 		  try{
@@ -74,28 +73,28 @@ public class insert_opportunities {
 		   PrintWriter out = new PrintWriter(httpConn.getOutputStream());
 		    this.Token = "Token="+URLEncoder.encode(Token,"UTF-8");
 		    this.id = "id="+URLEncoder.encode(id,"UTF-8");
+		    this.deleted = "deleted="+URLEncoder.encode(deleted,"UTF-8");
 		    this.SME_ID = "SME_ID="+URLEncoder.encode(SME_ID,"UTF-8");
-		    this.name = "name="+URLEncoder.encode(name,"UTF-8");
 		    this.date_entered = "date_entered="+URLEncoder.encode(date_entered,"UTF-8");
 		    this.date_modified = "date_modified="+URLEncoder.encode(date_modified,"UTF-8");
 		    this.modified_user_id = "modified_user_id="+URLEncoder.encode(modified_user_id,"UTF-8");
 		    this.created_by = "created_by="+URLEncoder.encode(created_by,"UTF-8");
 		    this.description = "description="+URLEncoder.encode(description,"UTF-8");
-		    this.deleted = "deleted="+URLEncoder.encode(deleted,"UTF-8");
 		    this.assigned_user_id = "assigned_user_id="+URLEncoder.encode(assigned_user_id,"UTF-8");
+		    this.name = "name="+URLEncoder.encode(name,"UTF-8");
+            this.related_to = "related_to="+URLEncoder.encode(related_to,"UTF-8");  
 		    this.opportunity_type = "opportunity_type="+URLEncoder.encode(opportunity_type,"UTF-8");
 		    this.campaign_id = "campaign_id="+URLEncoder.encode(campaign_id,"UTF-8");
 		    this.lead_source = "lead_source="+URLEncoder.encode(lead_source,"UTF-8");
 		    this.amount = "amount="+URLEncoder.encode(amount,"UTF-8");
-		    this.amount_usdollar = "amount_usdollar="+URLEncoder.encode(amount_usdollar,"UTF-8");
 		    this.date_closed = "date_closed="+URLEncoder.encode(date_closed,"UTF-8");
 		    this.next_step = "next_step="+URLEncoder.encode(next_step,"UTF-8");
 		    this.sales_stage = "sales_stage="+URLEncoder.encode(sales_stage,"UTF-8");
 		    this.probability = "probability="+URLEncoder.encode(probability,"UTF-8");
 		
-		   out.print(this.Token+"&"+this.id+"&"+this.SME_ID+"&"+this.name+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
-		    this.created_by+"&"+this.description+"&"+this.deleted+"&"+this.assigned_user_id+"&"+this.opportunity_type+"&"+
-		    this.campaign_id+"&"+this.lead_source+"&"+this.amount+"&"+this.amount_usdollar+"&"+this.date_closed+"&"+
+		   out.print(this.Token+"&"+this.id+"&"+this.deleted+"&"+this.SME_ID+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
+		    this.created_by+"&"+this.description+"&"+this.assigned_user_id+"&"+this.name+"&"+this.related_to+"&"+
+		    this.opportunity_type+"&"+this.campaign_id+"&"+this.lead_source+"&"+this.amount+"&"+this.date_closed+"&"+
 		    this.next_step+"&"+this.sales_stage+"&"+this.probability);
 		   out.flush();
 		   out.close();
