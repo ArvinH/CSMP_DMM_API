@@ -35,7 +35,7 @@ public class insert_opportunities {
 	private String name = null;
 	private String related_to = null;
 	private String opportunity_type = null;
-	private String campaign_id = null;
+	private String campaign_source = null;
 	private String lead_source = null;
 	private String amount = null;
 	private String date_closed = null;
@@ -53,6 +53,7 @@ public class insert_opportunities {
 		  try{
 			 
 		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/insert_opportunities.do");
+	
 		   
 		   HostnameVerifier hv = new HostnameVerifier() {
 		        public boolean verify(String urlHostName, SSLSession session) {
@@ -84,7 +85,7 @@ public class insert_opportunities {
 		    this.name = "name="+URLEncoder.encode(name,"UTF-8");
             this.related_to = "related_to="+URLEncoder.encode(related_to,"UTF-8");  
 		    this.opportunity_type = "opportunity_type="+URLEncoder.encode(opportunity_type,"UTF-8");
-		    this.campaign_id = "campaign_id="+URLEncoder.encode(campaign_id,"UTF-8");
+		    this.campaign_source = "campaign_id="+URLEncoder.encode(campaign_source,"UTF-8");
 		    this.lead_source = "lead_source="+URLEncoder.encode(lead_source,"UTF-8");
 		    this.amount = "amount="+URLEncoder.encode(amount,"UTF-8");
 		    this.date_closed = "date_closed="+URLEncoder.encode(date_closed,"UTF-8");
@@ -94,7 +95,7 @@ public class insert_opportunities {
 		
 		   out.print(this.Token+"&"+this.id+"&"+this.deleted+"&"+this.SME_ID+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
 		    this.created_by+"&"+this.description+"&"+this.assigned_user_id+"&"+this.name+"&"+this.related_to+"&"+
-		    this.opportunity_type+"&"+this.campaign_id+"&"+this.lead_source+"&"+this.amount+"&"+this.date_closed+"&"+
+		    this.opportunity_type+"&"+this.campaign_source+"&"+this.lead_source+"&"+this.amount+"&"+this.date_closed+"&"+
 		    this.next_step+"&"+this.sales_stage+"&"+this.probability);
 		   out.flush();
 		   out.close();

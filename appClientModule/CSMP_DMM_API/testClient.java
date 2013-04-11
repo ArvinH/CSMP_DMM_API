@@ -8,8 +8,9 @@ public class testClient {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		insert_opportunities tt = new insert_opportunities();
-		int status = tt.send("xxxxx","100c5d1a-0054-80f3-f600-50ff8144a05d", "SME_001", "Waverly Trading House - 1000 units", "2013/1/23  06:20:14 AM", "2013/1/23  06:39:14 AM", "1", "1", "123", "0", "1"
-				, "New Business", "7c343060-69cd-cf34-aa9d-50ff85bb6526", "Self Generated", "25000", "25000", "2014/1/20", "test2", "Id. Decision Makers", "40");
+//		int status = tt.send("xxxxx","10860d94-c9e9-a29b-27ac-51249f456c51", "0", "SME-001", "2/20/2013 10:03:44", "3/21/2013 12:53:54", "1", "1", "NULL", "1", "JBC Banking Inc - 1000 units"
+//				, "Jere Murphey", "Existing Business", "User Conference", "Web Site", "1500000", "4/20/2013 12:00:00", "NULL", "Needs Analysis", "55");
+		int status = tt.send("","","","","","","","","","","","","","","","","","","","");
 		System.out.print(status);
 	}
 		
