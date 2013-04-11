@@ -22,6 +22,7 @@ import javax.security.cert.X509Certificate;
 
 
 public class insert_opportunities {
+	private String Token = null;
 	private String id = null;
 	private String SME_ID = null;
 	private String name = null;
@@ -46,7 +47,7 @@ public class insert_opportunities {
 		  
 		  }
 		  @SuppressWarnings("restriction")
-		public int send(String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
+		public int send(String Token, String id, String SME_ID, String name, String date_entered, String date_modified, String modified_user_id, String created_by, String description, String
 					deleted, String assigned_user_id, String opportunity_type, String campaign_id, String lead_source, String amount, String amount_usdollar, String date_closed, 
 					String next_step, String sales_stage, String probability){
 		 
@@ -71,6 +72,7 @@ public class insert_opportunities {
 		   httpConn.setDoInput(true);
 		   httpConn.setUseCaches(false);
 		   PrintWriter out = new PrintWriter(httpConn.getOutputStream());
+		    this.Token = "Token="+URLEncoder.encode(Token,"UTF-8");
 		    this.id = "id="+URLEncoder.encode(id,"UTF-8");
 		    this.SME_ID = "SME_ID="+URLEncoder.encode(SME_ID,"UTF-8");
 		    this.name = "name="+URLEncoder.encode(name,"UTF-8");
@@ -91,7 +93,7 @@ public class insert_opportunities {
 		    this.sales_stage = "sales_stage="+URLEncoder.encode(sales_stage,"UTF-8");
 		    this.probability = "probability="+URLEncoder.encode(probability,"UTF-8");
 		
-		   out.print(this.id+"&"+this.SME_ID+"&"+this.name+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
+		   out.print(this.Token+"&"+this.id+"&"+this.SME_ID+"&"+this.name+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
 		    this.created_by+"&"+this.description+"&"+this.deleted+"&"+this.assigned_user_id+"&"+this.opportunity_type+"&"+
 		    this.campaign_id+"&"+this.lead_source+"&"+this.amount+"&"+this.amount_usdollar+"&"+this.date_closed+"&"+
 		    this.next_step+"&"+this.sales_stage+"&"+this.probability);
