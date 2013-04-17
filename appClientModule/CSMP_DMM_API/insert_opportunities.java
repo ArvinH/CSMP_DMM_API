@@ -72,26 +72,26 @@ public class insert_opportunities {
 		   httpConn.setDoInput(true);
 		   httpConn.setUseCaches(false);
 		   PrintWriter out = new PrintWriter(httpConn.getOutputStream());
-		    this.Token = "Token="+URLEncoder.encode(Token,"UTF-8");
-		    this.id = "id="+URLEncoder.encode(id,"UTF-8");
-		    this.deleted = "deleted="+URLEncoder.encode(deleted,"UTF-8");
-		    this.SME_ID = "SME_ID="+URLEncoder.encode(SME_ID,"UTF-8");
-		    this.date_entered = "date_entered="+URLEncoder.encode(date_entered,"UTF-8");
-		    this.date_modified = "date_modified="+URLEncoder.encode(date_modified,"UTF-8");
-		    this.modified_user_id = "modified_user_id="+URLEncoder.encode(modified_user_id,"UTF-8");
-		    this.created_by = "created_by="+URLEncoder.encode(created_by,"UTF-8");
-		    this.description = "description="+URLEncoder.encode(description,"UTF-8");
-		    this.assigned_user_id = "assigned_user_id="+URLEncoder.encode(assigned_user_id,"UTF-8");
-		    this.name = "name="+URLEncoder.encode(name,"UTF-8");
-            this.related_to = "related_to="+URLEncoder.encode(related_to,"UTF-8");  
-		    this.opportunity_type = "opportunity_type="+URLEncoder.encode(opportunity_type,"UTF-8");
-		    this.campaign_source = "campaign_source="+URLEncoder.encode(campaign_source,"UTF-8");
-		    this.lead_source = "lead_source="+URLEncoder.encode(lead_source,"UTF-8");
-		    this.amount = "amount="+URLEncoder.encode(amount,"UTF-8");
-		    this.date_closed = "date_closed="+URLEncoder.encode(date_closed,"UTF-8");
-		    this.next_step = "next_step="+URLEncoder.encode(next_step,"UTF-8");
-		    this.sales_stage = "sales_stage="+URLEncoder.encode(sales_stage,"UTF-8");
-		    this.probability = "probability="+URLEncoder.encode(probability,"UTF-8");
+		    this.Token = "Token="+URLEncoder.encode(((Token==null||Token==""||Token=="NULL")?"NULL":"\""+Token+"\""),"UTF-8");
+		    this.id = "id="+URLEncoder.encode(((id==null||id==""||id=="NULL")?"NULL":"\""+id+"\""),"UTF-8");
+		    this.deleted = "deleted="+URLEncoder.encode(((deleted==null||deleted==""||deleted=="NULL")?"NULL":"\""+deleted+"\""),"UTF-8");
+		    this.SME_ID = "SME_ID="+URLEncoder.encode(((SME_ID==null||SME_ID==""||SME_ID=="NULL")?"NULL":"\""+SME_ID+"\""),"UTF-8");
+		    this.date_entered = "date_entered="+URLEncoder.encode(((date_entered==null||date_entered==""||date_entered=="NULL")?"NULL":"\""+date_entered+"\""),"UTF-8");
+		    this.date_modified = "date_modified="+URLEncoder.encode(((date_modified==null||date_modified==""||date_modified=="NULL")?"NULL":"\""+date_modified+"\""),"UTF-8");
+		    this.modified_user_id = "modified_user_id="+URLEncoder.encode(((modified_user_id==null||modified_user_id==""||modified_user_id=="NULL")?"NULL":"\""+modified_user_id+"\""),"UTF-8");
+		    this.created_by = "created_by="+URLEncoder.encode(((created_by==null||created_by==""||created_by=="NULL")?"NULL":"\""+created_by+"\""),"UTF-8");
+		    this.description = "description="+URLEncoder.encode(((description==null||description==""||description=="NULL")?"NULL":"\""+description+"\""),"UTF-8");
+		    this.assigned_user_id = "assigned_user_id="+URLEncoder.encode(((assigned_user_id==null||assigned_user_id==""||assigned_user_id=="NULL")?"NULL":"\""+assigned_user_id+"\""),"UTF-8");
+		    this.name = "name="+URLEncoder.encode(((name==null||name==""||name=="NULL")?"NULL":"\""+name+"\""),"UTF-8");
+            this.related_to = "related_to="+URLEncoder.encode(((related_to==null||related_to==""||related_to=="NULL")?"NULL":"\""+related_to+"\""),"UTF-8");  
+		    this.opportunity_type = "opportunity_type="+URLEncoder.encode(((opportunity_type==null||opportunity_type==""||opportunity_type=="NULL")?"NULL":"\""+opportunity_type+"\""),"UTF-8");
+		    this.campaign_source = "campaign_source="+URLEncoder.encode(((campaign_source==null||campaign_source==""||campaign_source=="NULL")?"NULL":"\""+campaign_source+"\""),"UTF-8");
+		    this.lead_source = "lead_source="+URLEncoder.encode(((lead_source==null||lead_source==""||lead_source=="NULL")?"NULL":"\""+lead_source+"\""),"UTF-8");
+		    this.amount = "amount="+URLEncoder.encode(((amount==null||amount==""||amount=="NULL")?"NULL":"\""+amount+"\""),"UTF-8");
+		    this.date_closed = "date_closed="+URLEncoder.encode(((date_closed==null||date_closed==""||date_closed=="NULL")?"NULL":"\""+date_closed+"\""),"UTF-8");
+		    this.next_step = "next_step="+URLEncoder.encode(((next_step==null||next_step==""||next_step=="NULL")?"NULL":"\""+next_step+"\""),"UTF-8");
+		    this.sales_stage = "sales_stage="+URLEncoder.encode(((sales_stage==null||sales_stage==""||sales_stage=="NULL")?"NULL":"\""+sales_stage+"\""),"UTF-8");
+		    this.probability = "probability="+URLEncoder.encode(((probability==null||probability==""||probability=="NULL")?"NULL":"\""+probability+"\""),"UTF-8");
 		  
 		   out.print(this.Token+"&"+this.id+"&"+this.deleted+"&"+this.SME_ID+"&"+this.date_entered+"&"+this.date_modified+"&"+this.modified_user_id+"&"+
 		    this.created_by+"&"+this.description+"&"+this.assigned_user_id+"&"+this.name+"&"+this.related_to+"&"+
@@ -131,7 +131,7 @@ public class insert_opportunities {
 			        try {
 			            TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
 			            KeyStore tks = KeyStore.getInstance("JKS");
-			            tks.load(new FileInputStream("SSL/serverstore.jks"),
+			            tks.load(this.getClass().getClassLoader().getResourceAsStream("SSL/serverstore.jks"),
 			            SERVER_KEY_STORE_PASSWORD.toCharArray());
 			            tmf.init(tks);
 			            chain = ((X509TrustManager) tmf.getTrustManagers()[0]).getAcceptedIssuers();
