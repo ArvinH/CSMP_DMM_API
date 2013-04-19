@@ -51,12 +51,12 @@ public class insert_campaigns {
 	private String actualresponsecount = null;
 	private String actualsalescount = null;
 	private String actualroi = null;
-	private int ReStatus = 0;
+	private String ReStatus = "0";
 		  public insert_campaigns(){
 		  
 		  }
 		  @SuppressWarnings("restriction")
-		public int send(String Token, String id, String deleted, String SME_ID, String date_entered, String date_modified, String modified_user_id, String created_by, String description,
+		public String send(String Token, String id, String deleted, String SME_ID, String date_entered, String date_modified, String modified_user_id, String created_by, String description,
 				String assigned_user_id, String name, String type, String status, String date_closed, String expectedrevenue, String budgetcost, 
 					String actualcost, String expectedresponse, String numsent, String product_id, String sponsor, String targetaudience, String targetsize, String expectedresponsecount,
 					String expectedsalescount, String expectedroi, String actualresponsecount, String actualsalescount, String actualroi){
@@ -123,7 +123,7 @@ public class insert_campaigns {
 		   out.flush();
 		   out.close();
 		   BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
-		   ReStatus = Integer.parseInt(br.readLine());
+		   ReStatus =br.readLine();
 		   br.close();
 		   
 		  }catch(Exception e){

@@ -42,12 +42,12 @@ public class insert_opportunities {
 	private String next_step = null;
 	private String sales_stage = null;
 	private String probability = null;
-	private int status = 0;
+	private String status = "0";
 		  public insert_opportunities(){
 		  
 		  }
 		  @SuppressWarnings("restriction")
-		public int send(String Token, String id,String deleted, String SME_ID, String date_entered, String date_modified, String modified_user_id, String created_by, String description,  String assigned_user_id, String name, String related_to, String opportunity_type, String campaign_source, String lead_source, String amount,String date_closed, 
+		public String send(String Token, String id,String deleted, String SME_ID, String date_entered, String date_modified, String modified_user_id, String created_by, String description,  String assigned_user_id, String name, String related_to, String opportunity_type, String campaign_source, String lead_source, String amount,String date_closed, 
 					String next_step, String sales_stage, String probability){
 		 
 		  try{
@@ -100,7 +100,7 @@ public class insert_opportunities {
 		   out.flush();
 		   out.close();
 		   BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
-		   status = Integer.parseInt(br.readLine());
+		   status = br.readLine();
 		   br.close();
 		   
 		  }catch(Exception e){
