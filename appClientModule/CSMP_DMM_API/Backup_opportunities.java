@@ -21,7 +21,7 @@ import javax.security.cert.X509Certificate;
 
 
 
-public class insert_opportunities {
+public class Backup_opportunities {
 	private String Token = null;
 	private String id = null;
 	private String deleted = null;
@@ -43,7 +43,7 @@ public class insert_opportunities {
 	private String sales_stage = null;
 	private String probability = null;
 	private String status = "0";
-		  public insert_opportunities(){
+		  public Backup_opportunities(){
 		  
 		  }
 		  @SuppressWarnings("restriction")

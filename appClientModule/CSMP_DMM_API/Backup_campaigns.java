@@ -21,7 +21,7 @@ import javax.security.cert.X509Certificate;
 
 
 
-public class insert_campaigns {
+public class Backup_campaigns {
 	private String Token = null;
 	private String id = null;
 	private String deleted = null;
@@ -52,7 +52,7 @@ public class insert_campaigns {
 	private String actualsalescount = null;
 	private String actualroi = null;
 	private String ReStatus = "0";
-		  public insert_campaigns(){
+		  public Backup_campaigns(){
 		  
 		  }
 		  @SuppressWarnings("restriction")
