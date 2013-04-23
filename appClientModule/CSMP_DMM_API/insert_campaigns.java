@@ -63,7 +63,7 @@ public class insert_campaigns {
 		 
 		  try{
 			 
-		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/insert_campaigns.do");
+		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/backup_campaigns.do");
 		   
 		   HostnameVerifier hv = new HostnameVerifier() {
 		        public boolean verify(String urlHostName, SSLSession session) {

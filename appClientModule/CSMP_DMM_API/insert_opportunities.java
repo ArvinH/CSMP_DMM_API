@@ -52,7 +52,7 @@ public class insert_opportunities {
 		 
 		  try{
 			 
-		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/insert_opportunities.do");
+		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/backup_opportunities.do");
 	
 		   
 		   HostnameVerifier hv = new HostnameVerifier() {
