@@ -42,7 +42,7 @@ public class insert_base {
 		  try{
 			 
 //		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/backup_opportunities.do");
-		   URL httpurl = new URL("http://csmp_dmm_chichi.vcap.me/backup_base.do");
+		   URL httpurl = new URL("http://dmm.vcap.me/backup_base.do");
 		   
 		   HostnameVerifier hv = new HostnameVerifier() {
 		        public boolean verify(String urlHostName, SSLSession session) {
