@@ -21,7 +21,7 @@ import javax.security.cert.X509Certificate;
 
 
 
-public class Backup_opportunities {
+public class insert_opportunities {
 	private String Token = null;
 	private String id = null;
 	private String deleted = null;
@@ -43,7 +43,7 @@ public class Backup_opportunities {
 	private String sales_stage = null;
 	private String probability = null;
 	private String status = "0";
-		  public Backup_opportunities(){
+		  public insert_opportunities(){
 		  
 		  }
 		  @SuppressWarnings("restriction")
@@ -52,19 +52,19 @@ public class Backup_opportunities {
 		 
 		  try{
 			 
-		   URL httpurl = new URL("http://dmm.vcap.me/backup_opportunities.do");
-	
+//		   URL httpurl = new URL("https://140.116.82.17:8463/CSMP_DMM/backup_opportunities.do");
+		   URL httpurl = new URL("http://csmp_dmm_chichi.vcap.me/backup_opportunities.do");
 		   
 		   HostnameVerifier hv = new HostnameVerifier() {
 		        public boolean verify(String urlHostName, SSLSession session) {
-		            System.out.println("Warning: URL Host: " + urlHostName + " vs. "
-		                               + session.getPeerHost());
+//		            System.out.println("Warning: URL Host: " + urlHostName + " vs. "
+//		                               + session.getPeerHost());
 		            return true;
 		        }
 		    };
 		    
-		  // trustAllHttpsCertificates();
-		  // HttpsURLConnection.setDefaultHostnameVerifier(hv);
+//		   trustAllHttpsCertificates();
+//		   HttpsURLConnection.setDefaultHostnameVerifier(hv);
 
 		   HttpURLConnection httpConn = (HttpURLConnection)httpurl.openConnection(); 
 		   httpConn.setRequestMethod("POST");
@@ -72,10 +72,10 @@ public class Backup_opportunities {
 		   httpConn.setDoInput(true);
 		   httpConn.setUseCaches(false);
 		   PrintWriter out = new PrintWriter(httpConn.getOutputStream());
-		    this.Token = "Token="+URLEncoder.encode(((Token==null||Token==""||Token=="NULL")?"NULL":Token),"UTF-8");
+		    this.Token = "Token="+URLEncoder.encode(Token,"UTF-8");
 		    this.id = "id="+URLEncoder.encode(((id==null||id==""||id=="NULL")?"NULL":"\""+id+"\""),"UTF-8");
 		    this.deleted = "deleted="+URLEncoder.encode(((deleted==null||deleted==""||deleted=="NULL")?"NULL":"\""+deleted+"\""),"UTF-8");
-		    this.SME_ID = "SME_ID="+URLEncoder.encode(((SME_ID==null||SME_ID==""||SME_ID=="NULL")?"NULL":"\""+SME_ID+"\""),"UTF-8");
+		    this.SME_ID = "SME_ID="+URLEncoder.encode(((SME_ID==null||SME_ID==""||SME_ID=="NULL")?"NULL":SME_ID),"UTF-8");
 		    this.date_entered = "date_entered="+URLEncoder.encode(((date_entered==null||date_entered==""||date_entered=="NULL")?"NULL":"\""+date_entered+"\""),"UTF-8");
 		    this.date_modified = "date_modified="+URLEncoder.encode(((date_modified==null||date_modified==""||date_modified=="NULL")?"NULL":"\""+date_modified+"\""),"UTF-8");
 		    this.modified_user_id = "modified_user_id="+URLEncoder.encode(((modified_user_id==null||modified_user_id==""||modified_user_id=="NULL")?"NULL":"\""+modified_user_id+"\""),"UTF-8");
